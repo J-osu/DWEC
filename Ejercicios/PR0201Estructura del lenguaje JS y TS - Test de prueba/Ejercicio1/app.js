@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (formularioValido) {
             // Si el formulario es realmente válido (pasó HTML5 y las validaciones JS)
-            alert('✅ ¡Registro Exitoso! El formulario se enviaría ahora.');
+            alert('¡Registro Exitoso! El formulario se enviaría ahora.');
             // form.submit(); // Descomentar para enviar realmente a un servidor
         } else {
             // Si hubo errores de JS, enfocamos el primer elemento no válido
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (firstInvalid) {
                 firstInvalid.focus();
             }
-            alert('⚠️ Por favor, corrige los errores marcados antes de continuar.');
+            alert('Por favor, corrige los errores marcados antes de continuar.');
         }
     });
 });

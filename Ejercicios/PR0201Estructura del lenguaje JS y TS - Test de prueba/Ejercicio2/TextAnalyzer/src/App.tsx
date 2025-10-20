@@ -2,10 +2,6 @@ import { useState, useMemo, useCallback } from 'react';
 import type { ChangeEvent } from 'react';
 import './styles.css';
 
-// =========================================================
-// FASE 1: El Analizador (Interfaces y Lógica TypeScript)
-// =========================================================
-
 /** Define la estructura para el conteo de palabras clave */
 interface WordCount {
     word: string;
@@ -42,8 +38,8 @@ const SPANISH_STOP_WORDS: Set<string> = new Set([
 
 /**
  * Limpia y tokeniza el texto, convirtiéndolo a minúsculas para un conteo preciso.
- * @param {string} text - El texto de entrada.
- * @returns {string[]} Un array de palabras limpias.
+ * @param {string} text -Texto de entrada.
+ * @returns {string[]} Array de palabras limpias.
  */
 const getCleanWords = (text: string): string[] => {
     // Convertir a minúsculas
@@ -61,8 +57,8 @@ const getCleanWords = (text: string): string[] => {
 
 /**
  * Calcula la frecuencia de cada palabra en el texto, excluyendo stop words.
- * @param {string} text - El texto de entrada.
- * @returns {Map<string, number>} Un mapa con la frecuencia de las palabras clave.
+ * @param {string} text - Texto de entrada.
+ * @returns {Map<string, number>} Mapa con la frecuencia de las palabras clave.
  */
 const getWordFrequency = (text: string): Map<string, number> => {
     const words: string[] = getCleanWords(text);
@@ -79,8 +75,8 @@ const getWordFrequency = (text: string): Map<string, number> => {
 
 /**
  * Función principal que analiza un texto y devuelve todas las estadísticas tipadas.
- * @param {string} text - El texto a analizar.
- * @returns {TextStatistics} El objeto con todas las estadísticas calculadas.
+ * @param {string} text - Texto a analizar.
+ * @returns {TextStatistics} Objeto con todas las estadísticas calculadas.
  */
 const analyzeText = (text: string): TextStatistics => {
     if (!text || text.trim().length === 0) {
@@ -92,18 +88,18 @@ const analyzeText = (text: string): TextStatistics => {
         };
     }
 
-    // --- Cuentas Básicas ---
+    //Cuentas Básicas
     const characterCount: number = text.length;
     const characterCountNoSpaces: number = text.replace(/[\s\n\r\t]/g, '').length; 
     
-    // --- Palabras y Frecuencia ---
+    //Palabras y Frecuencia
     const words: string[] = getCleanWords(text);
     const wordCount: number = words.length;
     
     const wordFrequencyMap: Map<string, number> = getWordFrequency(text);
     const uniqueWordCount: number = wordFrequencyMap.size;
     
-    // --- Sentencias y Párrafos ---
+    //Sentencias y Párrafos
     // Oraciones: busca signos de puntuación finales (., !, ?) seguidos de espacio o fin de línea
     const sentenceMatches: RegExpMatchArray | null = text.match(/[^.!?]+[.!?](\s|$)/g);
     const sentenceCount: number = sentenceMatches ? sentenceMatches.length : 0;
@@ -112,7 +108,7 @@ const analyzeText = (text: string): TextStatistics => {
     const paragraphs: string[] = text.split(/\n+/).filter(p => p.trim().length > 0);
     const paragraphCount: number = paragraphs.length;
 
-    // --- Promedios ---
+    //Promedios
     
     // Longitud media de palabras
     const totalWordLength: number = words.reduce((sum, word) => sum + word.length, 0);
@@ -121,7 +117,7 @@ const analyzeText = (text: string): TextStatistics => {
     // Longitud media de sentencias (en palabras)
     const averageSentenceLength: number = sentenceCount > 0 ? parseFloat((wordCount / sentenceCount).toFixed(2)) : 0;
 
-    // --- Palabras Clave Principales ---
+    //Palabras Clave Principales
     const topKeywords: WordCount[] = Array.from(wordFrequencyMap.entries())
         .map(([word, count]): WordCount => ({ word, count }))
         .sort((a, b) => b.count - a.count)
@@ -141,29 +137,24 @@ const analyzeText = (text: string): TextStatistics => {
     };
 };
 
-
-// =========================================================
-// FASE 3: Interfaz de Usuario (React TSX Component)
-// =========================================================
-
 // Usamos la interfaz para inicializar el estado
 const initialStats: TextStatistics = analyzeText('');
 
 /**
  * Componente principal de la aplicación Text Analyzer Pro.
- * @returns {JSX.Element} El componente de React.
+ * @returns {JSX.Element} Componente de React.
  */
 const App = () => {
     const [text, setText] = useState<string>('');
     const [stats, setStats] = useState<TextStatistics>(initialStats);
     const [fullAnalysisRun, setFullAnalysisRun] = useState<boolean>(false);
 
-    // Usa useMemo para calcular estadísticas simples en tiempo real
+    // Usamos useMemo para calcular estadísticas simples en tiempo real
     const realTimeStats: TextStatistics = useMemo(() => {
         return analyzeText(text);
     }, [text]);
 
-    // Función para el análisis completo (disparado por el botón)
+    // Función para el análisis completo
     const handleAnalyze = useCallback((): void => {
         const result: TextStatistics = analyzeText(text);
         setStats(result);
