@@ -1,0 +1,217 @@
+:root {
+    --color-principal: #007bff; /* Azul profesional */
+    --color-secundario: #0056b3;
+    --color-error: #dc3545;
+    --color-focus: #80bdff;
+    --color-fondo: #f4f7f6;
+    --color-texto: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--color-principal);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+/* Agrupación de Campos (Fieldset) */
+fieldset {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    background-color: #fcfcfc;
+}
+
+legend {
+    font-size: 1.25rem;
+    color: var(--color-secundario);
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/* Estilos de Elementos del Formulario */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Estilizado de todos los inputs, textarea y select */
+input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
+select:not([multiple]),
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Fundamental para Mobile-First */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Feedback Visual: Estados */
+input:focus, select:focus, textarea:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px var(--color-focus);
+    outline: none;
+}
+
+input:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+/* Diferenciar campos obligatorios */
+label[required]::after {
+    content: " *";
+    color: var(--color-error);
+    font-weight: bold;
+}
+
+/* Range Slider Styling (Contenedor para JS) */
+.range-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#nivel_experiencia {
+    flex-grow: 1;
+}
+
+#rango_valor {
+    font-weight: bold;
+    color: var(--color-principal);
+    min-width: 25px;
+}
+
+/* Radio Buttons Group */
+.radio-group label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+/* Select Múltiple */
+select[multiple] {
+    height: auto !important;
+}
+
+/* Botones */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.button-group button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1;
+    transition: background-color 0.3s;
+}
+
+.button-group button[type="submit"] {
+    background-color: var(--color-principal);
+    color: white;
+}
+
+.button-group button[type="reset"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+.button-group button[type="button"] {
+    background-color: #ffc107;
+    color: var(--color-texto);
+}
+
+.button-group button:hover {
+    opacity: 0.9;
+}
+
+/* Mensajes de Error */
+.error-message {
+    color: var(--color-error);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none; 
+}
+
+/* Estilo de campo con error */
+.input-error {
+    border-color: var(--color-error) !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.5) !important;
+}
+
+/* Checkbox de Términos y Condiciones */
+.terms-group {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* ========================================================= */
+/* Media Queries (Diseño Responsivo: Desktop) */
+/* ========================================================= */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Estilos de columna para fieldsets */
+    .fieldset-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .fieldset-single-col > .form-group {
+        grid-column: span 2;
+    }
+
+    .fieldset-single-col-half > .form-group {
+        grid-column: span 1;
+    }
+
+    /* Ajuste de botones para desktop */
+    .button-group {
+        gap: 20px;
+    }
+}

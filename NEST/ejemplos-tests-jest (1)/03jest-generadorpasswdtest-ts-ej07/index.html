@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="card">
+            <header class="header">
+                <div>
+                    <h1>Generador de Contraseñas</h1>
+                    <p class="lead">Crea contraseñas seguras y copia al portapapeles con un clic.</p>
+                </div>
+            </header>
+
+            <form id="passwordForm" aria-describedby="form-desc">
+                <div id="form-fields" class="form-grid">
+                    <div class="form-group">
+                        <label for="minLength">Longitud mínima:</label>
+                        <input type="number" id="minLength" name="minLength" min="4" max="128" value="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxLength">Longitud máxima:</label>
+                        <input type="number" id="maxLength" name="maxLength" min="4" max="128" value="16" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="useUppercase">Incluir letras mayúsculas:</label>
+                        <input type="checkbox" id="useUppercase" name="useUppercase">
+                    </div>
+                    <div class="form-group">
+                        <label for="useLowercase">Incluir letras minúsculas:</label>
+                        <input type="checkbox" id="useLowercase" name="useLowercase" checked>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="useNumbers">Incluir números:</label>
+                        <input type="checkbox" id="useNumbers" name="useNumbers">
+                    </div>
+                    <div class="form-group">
+                        <label for="useSymbols">Incluir símbolos:</label>
+                        <input type="checkbox" id="useSymbols" name="useSymbols">
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="customSymbols">Símbolos personalizados:</label>
+                        <input type="text" id="customSymbols" name="customSymbols" placeholder="Ej: @$#*">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" id="generateButton">Generar Contraseña</button>
+                </div>
+            </form>
+
+            <div id="result" aria-live="polite">
+                <h2>Contraseña Generada:</h2>
+                <div class="result-row">
+                    <p id="generatedPassword" class="generated mono" aria-atomic="true"></p>
+                    <div class="result-actions">
+                        <button id="copyButton" class="secondary" aria-label="Copiar contraseña">Copiar</button>
+                    </div>
+                </div>
+
+                <div id="strength" class="small" aria-hidden="false">
+                    <div id="strengthBar" class="strength-bar" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"></div>
+                    <div id="strengthLabel" class="strength-label"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="dist/ui.js" defer></script>
+</body>
+
+</html>

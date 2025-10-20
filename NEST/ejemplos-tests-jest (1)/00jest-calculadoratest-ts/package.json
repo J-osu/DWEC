@@ -1,0 +1,24 @@
+{
+    "name": "calculadora-test",
+    "version": "1.0.0",
+    "description": "Un proyecto de una calculadora simple con propósito de prueba",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "test:mutation": "stryker run",
+        "docs": "typedoc"
+    },
+    "devDependencies": {
+        "@stryker-mutator/core": "^9.1.1",
+        "@stryker-mutator/jest-runner": "^9.1.1",
+        "@stryker-mutator/typescript-checker": "^9.1.1",
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24.6.2",
+        "jest": "^30.2.0",
+        "ts-jest": "^29.4.4",
+        "typedoc": "^0.28.13",
+        "typescript": "^5.9.3"
+    }
+}

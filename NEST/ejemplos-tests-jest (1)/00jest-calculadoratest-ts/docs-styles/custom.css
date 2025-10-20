@@ -1,0 +1,24 @@
+/* docs-styles/custom.css */
+:root {
+    --light-hl-0: #098658;
+    --dark-hl-0: #b5cea8;
+    --light-code-background: #f5f5f5;
+    --dark-code-background: #1e1e1e;
+}
+
+/* Personaliza los elementos principales */
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Mejora la legibilidad del código */
+.tsd-typography code {
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Estilo para los bloques de código */
+pre {
+    border-radius: 8px;
+    padding: 1em;
+}

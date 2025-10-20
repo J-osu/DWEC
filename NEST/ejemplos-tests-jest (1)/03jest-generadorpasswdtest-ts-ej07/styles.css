@@ -1,0 +1,227 @@
+/* styles.css - Diseño profesional y responsive */
+:root{
+    --bg: #eef2f7;
+    --card-bg: #ffffff;
+    --primary: #007bff;
+    --primary-600: #0056b3;
+    --muted: #6c757d;
+    --surface: #f1f3f5;
+    --radius: 16px;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+*{box-sizing:border-box}
+html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    color: #0f1724;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+#container{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    align-items:start;
+    padding:48px 24px;
+}
+
+.card{
+    width:100%;
+    max-width:800px; /* Ajuste para un diseño más equilibrado */
+    background:var(--card-bg);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:32px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:18px;
+    flex-direction:column; /* apilar por defecto para mejorar usabilidad */
+}
+
+h1{
+    margin:0;
+    font-size:2rem;
+    font-weight:700;
+    color:#343a40;
+}
+
+.lead{color:var(--muted); margin-top:6px; font-size:0.95rem}
+
+form{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:16px;
+}
+
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.form-group{display:flex; flex-direction:column; align-items:flex-start}
+.form-group.full{grid-column:1/-1}
+
+label{font-size:0.9rem; color:#0f1724}
+input[type="number"], input[type="text"], select{
+    width:100%;
+    padding:12px 14px;
+    margin-top:8px;
+    border:1px solid #ced4da;
+    border-radius:10px;
+    font-size:1rem;
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0 }
+
+.checkbox-row{display:flex; gap:12px; flex-wrap:wrap}
+.checkbox{display:flex; align-items:center; gap:8px}
+input[type="checkbox"]{width:16px; height:16px}
+
+.actions{display:flex; gap:12px; align-items:center}
+button{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+    transition:background 0.3s ease, transform 0.1s ease;
+}
+button:hover{
+    background:var(--primary-600);
+    transform:translateY(-2px);
+}
+button.secondary{background:#eef2ff; color:var(--primary); border:1px solid #e6ecff}
+button:active{transform:translateY(1px)}
+button:hover{background:var(--primary-600)}
+
+#result{
+    margin-top:18px;
+    background:#fbfdff;
+    padding:16px;
+    border-radius:10px;
+    border:1px solid #eef2f7;
+    grid-column: 2;
+    align-self: stretch;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 12px;
+    align-self: center;
+}
+
+#generatedPassword{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace; font-size:1.05rem; color:#07103a; word-break:break-all}
+
+.muted{color:var(--muted); font-size:0.9rem}
+
+/* Result layout */
+.result-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.result-actions { display:flex; gap:8px; }
+
+.generated { padding: 12px 14px; background: #ffffff; border-radius: 10px; border: 1px solid #e9eef3; flex:1; }
+
+button.secondary { background: transparent; color: var(--primary); border: 1px solid rgba(0,123,255,0.12); padding:8px 12px; border-radius:10px; }
+
+/* Strength bar */
+#strength { margin-top:10px; display:flex; gap:12px; align-items:center; }
+.strength-bar {
+    height:10px; width:0%; background:linear-gradient(90deg,#ff6b6b,#ffd93d,#8fe388); border-radius:6px; transition:width .25s ease;
+}
+.strength-bar.level-0{background:#e9ecef}
+.strength-bar.level-1{background:#ff6b6b}
+.strength-bar.level-2{background:#ffb648}
+.strength-bar.level-3{background:#78c2ff}
+.strength-bar.level-4{background:#57d39e}
+
+.strength-label{font-weight:600; color:var(--muted)}
+
+/* Ajustes responsivos adicionales */
+@media (min-width: 1200px) {
+    .card {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        padding: 20px;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Ajustes para incluir 'Contraseña Generada' en la misma columna */
+#result {
+    align-self: stretch;
+    width: 100%;
+}
+
+/* Ajustes para reducir ancho y acercar verticalmente 'Contraseña Generada' */
+#result {
+    max-width: 600px;
+    margin-top: 12px;
+    align-self: center;
+}
+
+/* Ajustes para una sola columna */
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* Responsive */
+@media (min-width:900px){
+    /* en pantallas muy anchas, permitir una disposición de dos columnas dentro del formulario
+         pero manteniendo la tarjeta centrada y con ancho limitado para evitar estiramiento */
+    .card{max-width:920px}
+    .form-grid{grid-template-columns:1fr 1fr}
+    .header{flex-direction:row; align-items:center}
+}
+
+@media (max-width:480px){
+    .card{padding:18px}
+    h1{font-size:1.25rem}
+    button{width:100%}
+}
+
+/* Utilities */
+.text-center{text-align:center}
+.small{font-size:0.85rem}

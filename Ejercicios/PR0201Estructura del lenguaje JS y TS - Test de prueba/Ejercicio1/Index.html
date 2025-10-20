@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro para Evento Tech - Ferretería Digital</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Registro para un Evento Tech</h1>
+        
+        <form id="registroForm" novalidate>
+            
+            <fieldset>
+                <legend>Información Personal</legend>
+                
+                <div class="fieldset-grid">
+                    <div class="form-group">
+                        <label for="nombre_completo" required>Nombre Completo</label>
+                        <input type="text" id="nombre_completo" name="nombre_completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" required>Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel">Teléfono</label>
+                        <input type="tel" id="tel" name="tel" pattern="^\+\d{9,15}$" placeholder="+XX YYYYYYYYY">
+                        <div class="error-message">Formato requerido: +código país y número (ej: +34 600123456).</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha_nacimiento" required>Fecha de Nacimiento</label>
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pais">País de Origen</label>
+                        <select id="pais" name="pais">
+                            <option value="">Selecciona tu país</option>
+                            <option value="ES">España</option>
+                            <option value="MX">México</option>
+                            <option value="CO">Colombia</option>
+                            <option value="AR">Argentina</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="perfil_url">URL Perfil (LinkedIn/Portfolio)</label>
+                        <input type="url" id="perfil_url" name="perfil_url" placeholder="https://linkedin.com/in/tuperfil">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Detalles de la Inscripción</legend>
+                
+                <div class="form-group radio-group">
+                    <label required>Tipo de Entrada</label>
+                    
+                    <label for="entrada_general"><input type="radio" id="entrada_general" name="tipo_entrada" value="general" checked required> General</label>
+                    <label for="entrada_estudiante"><input type="radio" id="entrada_estudiante" name="tipo_entrada" value="estudiante" required> Estudiante</label>
+                    <label for="entrada_vip"><input type="radio" id="entrada_vip" name="tipo_entrada" value="vip" required> VIP</label>
+                    <div id="tipo_entrada-error" class="error-message">Debes seleccionar un tipo de entrada.</div>
+                </div>
+
+                <div class="fieldset-grid">
+                    <div class="form-group fieldset-single-col-half">
+                        <label for="num_acompanantes">Número de Acompañantes</label>
+                        <input type="number" id="num_acompanantes" name="num_acompanantes" min="0" max="5" value="0">
+                    </div>
+
+                    <div class="form-group fieldset-single-col-half">
+                        <label for="color_acreditacion">Color de Acreditación</label>
+                        <input type="color" id="color_acreditacion" name="color_acreditacion" value="#007bff">
+                    </div>
+
+                    <div class="form-group fieldset-single-col-half">
+                        <label for="comprobante_estudiante" id="label_comprobante">Comprobante de Estudiante (PDF/Imagen)</label>
+                        <input type="file" id="comprobante_estudiante" name="comprobante_estudiante" accept="image/*, application/pdf">
+                        <div id="comprobante-error" class="error-message">Este campo es obligatorio si seleccionaste 'Estudiante'.</div>
+                    </div>
+                </div>
+                
+                <input type="hidden" name="evento_id" value="TECH-2025-BCN">
+            </fieldset>
+
+            <fieldset>
+                <legend>Preferencias y Talleres</legend>
+                
+                <div class="fieldset-grid">
+                    <div class="form-group fieldset-single-col-half">
+                        <label for="talleres">Talleres de Interés (Máx 4)</label>
+                        <select id="talleres" name="talleres" multiple size="4">
+                            <option value="backend_avanzado">Backend Avanzado (Node.js)</option>
+                            <option value="react_native">Desarrollo Móvil con React Native</option>
+                            <option value="arquitectura_microservicios">Arquitectura de Microservicios</option>
+                            <option value="devops_ci_cd">DevOps y CI/CD</option>
+                            <option value="accesibilidad_web">Accesibilidad Web (WAI-ARIA)</option>
+                            <option value="typescript">TypeScript Profundo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group range-container fieldset-single-col-half">
+                        <label for="nivel_experiencia">Nivel de Experiencia (1 a 10)</label>
+                        <input type="range" id="nivel_experiencia" name="nivel_experiencia" min="1" max="10" step="1" value="5">
+                        <span id="rango_valor">5</span>
+                    </div>
+                    
+                    <div class="form-group fieldset-single-col">
+                        <label for="busqueda_sesiones">Buscar Sesiones/Ponentes</label>
+                        <input type="search" id="busqueda_sesiones" name="busqueda_sesiones" placeholder="Ej: Seguridad, Marcos, IA">
+                    </div>
+
+                    <div class="form-group fieldset-single-col">
+                        <label for="comentarios">Preguntas o Comentarios</label>
+                        <textarea id="comentarios" name="comentarios" rows="3" maxlength="300" placeholder="Escribe aquí tus dudas (máximo 300 caracteres)."></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Cuenta de Usuario</legend>
+                
+                <div class="fieldset-grid">
+                    <div class="form-group fieldset-single-col-half">
+                        <label for="password" required>Contraseña</label>
+                        <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
+                        <div id="password-error" class="error-message">La contraseña debe tener entre 8 y 20 caracteres.</div>
+                    </div>
+
+                    <div class="form-group fieldset-single-col-half">
+                        <label for="confirm_password" required>Confirmar Contraseña</label>
+                        <input type="password" id="confirm_password" name="confirm_password" minlength="8" maxlength="20" required>
+                        <div id="confirm_password-error" class="error-message">Las contraseñas no coinciden.</div>
+                    </div>
+                </div>
+                
+                <div class="form-group fieldset-single-col">
+                    <label for="biografia">Breve Biografía</label>
+                    <textarea id="biografia" name="biografia" rows="4" placeholder="Cuentanos brevemente sobre tu experiencia profesional o tu interés en el evento..."></textarea>
+                </div>
+                
+                <div class="terms-group form-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms" required>Acepto los <a href="#" target="_blank">Términos y Condiciones</a> del evento.</label>
+                    <div id="terms-error" class="error-message">Debes aceptar los términos y condiciones.</div>
+                </div>
+            </fieldset>
+
+            <div class="button-group">
+                <button type="submit">Registrarse</button>
+                <button type="reset">Limpiar Formulario</button>
+                <button type="button" onclick="alert('Esta función se implementará más adelante para mostrar ayuda contextual.')">Ayuda</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="./app.js"></script> 
+</body>
+</html>

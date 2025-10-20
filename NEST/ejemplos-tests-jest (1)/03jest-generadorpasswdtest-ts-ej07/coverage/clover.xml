@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1759490915758" clover="3.2.0">
+  <project timestamp="1759490915758" name="All files">
+    <metrics statements="21" coveredstatements="21" conditionals="21" coveredconditionals="21" methods="1" coveredmethods="1" elements="43" coveredelements="43" complexity="0" loc="21" ncloc="21" packages="1" files="1" classes="1"/>
+    <file name="generate-passwd.ts" path="C:\Users\fran.matias\Documents\dwec\02\ejemplos\03jest-generadorpasswdtest-ts-ej07\src\lib\generate-passwd.ts">
+      <metrics statements="21" coveredstatements="21" conditionals="21" coveredconditionals="21" methods="1" coveredmethods="1"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="24" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="27" count="7" type="cond" truecount="7" falsecount="0"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="31" count="6" type="stmt"/>
+      <line num="32" count="6" type="stmt"/>
+      <line num="33" count="6" type="stmt"/>
+      <line num="34" count="6" type="stmt"/>
+      <line num="35" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="37" count="6" type="stmt"/>
+      <line num="38" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="39" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="40" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="41" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="43" count="6" type="stmt"/>
+      <line num="44" count="6" type="stmt"/>
+      <line num="46" count="6" type="stmt"/>
+      <line num="47" count="63" type="stmt"/>
+      <line num="48" count="63" type="stmt"/>
+      <line num="50" count="6" type="stmt"/>
+    </file>
+  </project>
+</coverage>

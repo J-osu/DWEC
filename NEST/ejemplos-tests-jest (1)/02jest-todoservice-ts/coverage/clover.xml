@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1759914074978" clover="3.2.0">
+  <project timestamp="1759914074978" name="All files">
+    <metrics statements="34" coveredstatements="33" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="12" elements="54" coveredelements="53" complexity="0" loc="34" ncloc="34" packages="1" files="1" classes="1"/>
+    <file name="TodoService.ts" path="C:\Users\fran.matias\Documents\dwec\02\ejemplos\02jest-todoservice-ts\src\TodoService.ts">
+      <metrics statements="34" coveredstatements="33" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="12"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="10" type="stmt"/>
+      <line num="15" count="10" type="stmt"/>
+      <line num="18" count="10" type="stmt"/>
+      <line num="22" count="7" type="stmt"/>
+      <line num="26" count="8" type="stmt"/>
+      <line num="27" count="8" type="stmt"/>
+      <line num="33" count="8" type="stmt"/>
+      <line num="34" count="8" type="stmt"/>
+      <line num="35" count="8" type="stmt"/>
+      <line num="39" count="3" type="stmt"/>
+      <line num="40" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="41" count="2" type="stmt"/>
+      <line num="42" count="2" type="stmt"/>
+      <line num="43" count="2" type="stmt"/>
+      <line num="47" count="2" type="stmt"/>
+      <line num="48" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="50" count="1" type="stmt"/>
+      <line num="51" count="1" type="stmt"/>
+      <line num="55" count="2" type="stmt"/>
+      <line num="56" count="4" type="stmt"/>
+      <line num="57" count="2" type="stmt"/>
+      <line num="58" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="59" count="2" type="stmt"/>
+      <line num="63" count="12" type="stmt"/>
+      <line num="64" count="12" type="stmt"/>
+      <line num="71" count="19" type="stmt"/>
+      <line num="72" count="19" type="stmt"/>
+      <line num="73" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="74" count="1" type="stmt"/>
+      <line num="76" count="0" type="stmt"/>
+      <line num="82" count="9" type="stmt"/>
+      <line num="83" count="9" type="stmt"/>
+    </file>
+  </project>
+</coverage>

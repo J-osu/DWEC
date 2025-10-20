@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1759911836993" clover="3.2.0">
+  <project timestamp="1759911836993" name="All files">
+    <metrics statements="20" coveredstatements="10" conditionals="5" coveredconditionals="4" methods="8" coveredmethods="6" elements="33" coveredelements="20" complexity="0" loc="20" ncloc="20" packages="1" files="2" classes="2"/>
+    <file name="app.ts" path="C:\Users\fran.matias\Documents\dwec\02\ejemplos\00jest-calculadoratest-ts\src\app.ts">
+      <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+    </file>
+    <file name="calculadora.ts" path="C:\Users\fran.matias\Documents\dwec\02\ejemplos\00jest-calculadoratest-ts\src\calculadora.ts">
+      <metrics statements="13" coveredstatements="10" conditionals="5" coveredconditionals="4" methods="8" coveredmethods="6"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="53" count="1" type="stmt"/>
+      <line num="63" count="1" type="stmt"/>
+      <line num="74" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="75" count="2" type="stmt"/>
+      <line num="77" count="1" type="stmt"/>
+      <line num="87" count="0" type="stmt"/>
+      <line num="98" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="99" count="0" type="stmt"/>
+      <line num="103" count="1" type="stmt"/>
+      <line num="114" count="0" type="stmt"/>
+      <line num="125" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
