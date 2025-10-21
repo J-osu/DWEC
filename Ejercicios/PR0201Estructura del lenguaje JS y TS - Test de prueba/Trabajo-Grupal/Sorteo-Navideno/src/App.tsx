@@ -3,6 +3,7 @@ import RaffleBoard from './components/sorteo/tablero';
 import type { NumeroStatus, ParticipanteData } from './core/types';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Boton from './UI/Boton.js';
 import './App.css'
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
   return (
     <>
   <div>
+    <Boton />
+
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
