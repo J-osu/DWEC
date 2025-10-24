@@ -30,6 +30,6 @@ const currentSceneKey = computed(() => store.currentSceneKey);
 <style scoped>
 /* Estilos muy básicos, aprovechando las clases de Bootstrap */
 .card {
-  border-left: 5px solid #007bff; /* Color primario de Bootstrap */
+  border-left: 5px solid #f3bb05; /* Color primario de Bootstrap */
 }
 </style>
