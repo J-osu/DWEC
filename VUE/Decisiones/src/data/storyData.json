@@ -1,0 +1,32 @@
+{
+  "start": {
+    "text": "Estás en la entrada de un oscuro bosque. El sol se oculta rápidamente.",
+    "options": [
+      {
+        "label": "Entrar en el bosque",
+        "nextScene": "forest_entry"
+      },
+      {
+        "label": "Volver a casa",
+        "nextScene": "ending_safe"
+      }
+    ]
+  },
+  "forest_entry": {
+    "text": "El aire se siente denso. Ves un camino a la izquierda y un riachuelo a la derecha.",
+    "options": [
+      {
+        "label": "Seguir el camino",
+        "nextScene": "path_choice"
+      },
+      {
+        "label": "Seguir el riachuelo",
+        "nextScene": "river_choice"
+      }
+    ]
+  },
+  "ending_safe": {
+    "text": "Vuelves a casa sano y salvo. Fin de la aventura.",
+    "options": []
+  }
+}
