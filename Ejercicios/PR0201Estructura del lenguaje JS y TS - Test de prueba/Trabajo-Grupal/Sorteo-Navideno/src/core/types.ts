@@ -3,13 +3,11 @@ export interface ParticipanteData {
     id: string;
     nombre: string;
     email: string;
-    telefono: string;
 }
 
-/** Estructura de datos para el estado del sorteo (ahora local). */
 export interface SorteoStateData {
     participants: ParticipanteData[];
-    tablero: Record<string, string | null>; // Ejemplo: { "00": "P-1", "01": null }
+    tablero: Record<string, string | null>;
     participanteIdCounter: number;
 }
 

@@ -13,13 +13,11 @@ class Participante implements ParticipanteData {
     public id: string;
     public nombre: string;
     public email: string;
-    public telefono: string;
 
     constructor(data: ParticipanteData) {
         this.id = data.id;
         this.nombre = data.nombre.trim();
         this.email = data.email.trim();
-        this.telefono = data.telefono.trim();
     }
 
     public isValid(): boolean {
@@ -60,7 +58,7 @@ export class Sorteo {
 
         return {
             participants: Array.from(this.participantes.values()).map(p => ({
-                id: p.id, nombre: p.nombre, email: p.email, telefono: p.telefono
+                id: p.id, nombre: p.nombre, email: p.email
             })),
             tablero: tableroObject,
             participanteIdCounter: this.participanteIdCounter,

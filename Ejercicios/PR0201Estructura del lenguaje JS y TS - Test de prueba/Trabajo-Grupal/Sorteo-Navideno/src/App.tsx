@@ -1,66 +1,59 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import RaffleBoard from './components/sorteo/tablero';
 import type { NumeroStatus, ParticipanteData } from './core/types';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Boton from './UI/Boton.js';
-import Tarjeta from './UI/StatCard.js';
-import './App.css'
+import FormularioParticipante from './components/sorteo/registroparticipantes';
+import SeleccionGanador from './components/sorteo/empiezasorteo';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  // Datos mínimos para renderizar el tablero
-  const [participantes] = useState<ParticipanteData[]>([]);
+  const [participantes, setParticipantes] = useState<ParticipanteData[]>([]);
   const [selectedParticipantId, setSelectedParticipantId] = useState<string>('');
 
-  // crear tablero de ejemplo (00-99) como estados locales
-  const emptyTablero = Array.from({length:100}, (_,i): NumeroStatus => ({
-    numero: i.toString().padStart(2,'0'),
+  const emptyTablero: NumeroStatus[] = Array.from({ length: 100 }, (_, i) => ({
+    numero: i.toString().padStart(2, '0'),
     ocupado: false,
     participanteId: null,
     nombreParticipante: null,
   }));
   const [tableroStatus, setTableroStatus] = useState<NumeroStatus[]>(emptyTablero);
-
   const [reservedNumbers, setReservedNumbers] = useState<string[]>([]);
+
+  const AgregarParticipante = (data: { nombre: string; email: string }) => {
+    const nuevo: ParticipanteData = {
+      id: Date.now().toString(),
+      nombre: data.nombre,
+      email: data.email,
+    };
+    setParticipantes(prev => [...prev, nuevo]);
+  };
 
   const handleReserve = (numero: string) => {
     if (!selectedParticipantId) { alert('Selecciona un participante'); return; }
-    setTableroStatus(prev => prev.map(n => n.numero === numero ? {...n, ocupado:true, participanteId:selectedParticipantId, nombreParticipante: participantes.find(p=>p.id===selectedParticipantId)?.nombre ?? null} : n));
+    setTableroStatus(prev => prev.map(n =>
+      n.numero === numero
+        ? { ...n, ocupado: true, participanteId: selectedParticipantId, nombreParticipante: participantes.find(p => p.id === selectedParticipantId)?.nombre ?? null }
+        : n
+    ));
     setReservedNumbers(prev => [...prev, numero]);
   };
 
   const handleRelease = (numero: string) => {
-    setTableroStatus(prev => prev.map(n => n.numero === numero ? {...n, ocupado:false, participanteId:null, nombreParticipante:null} : n));
+    setTableroStatus(prev => prev.map(n =>
+      n.numero === numero
+        ? { ...n, ocupado: false, participanteId: null, nombreParticipante: null }
+        : n
+    ));
     setReservedNumbers(prev => prev.filter(x => x !== numero));
   };
 
   return (
-    <>
-  <div>
-    <Boton />
-    <Tarjeta titulo="Tarjeta" descripcion="Descripcion tarjeta" />
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+      <div style={{ flex: '0 0 300px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <FormularioParticipante onAgregarParticipante={AgregarParticipante} />
+        <SeleccionGanador tableroStatus={tableroStatus} participantes={participantes} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <div style={{marginTop:20}}>
+
+      <div style={{ flex: 1 }}>
         <RaffleBoard
           tableroStatus={tableroStatus}
           participantes={participantes}
@@ -71,8 +64,8 @@ function App() {
           reservedNumbers={reservedNumbers}
         />
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
