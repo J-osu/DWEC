@@ -1,0 +1,69 @@
+{
+  "start": {
+    "text": "Estás en la entrada de un oscuro bosque. El sol se oculta rápidamente.",
+    "options": [
+      { "label": "Entrar en el bosque", "nextScene": "forest_entry" },
+      { "label": "Volver a casa", "nextScene": "ending_safe" }
+    ]
+  },
+  "forest_entry": {
+    "text": "El aire se siente denso. Ves un camino a la izquierda y un riachuelo a la derecha.",
+    "options": [
+      { "label": "Seguir el camino", "nextScene": "path_choice" },
+      { "label": "Seguir el riachuelo", "nextScene": "river_choice" }
+    ]
+  },
+  "ending_safe": {
+    "text": "Vuelves a casa sano y salvo. Fin de la aventura.",
+    "options": []
+  },
+  
+  
+  "path_choice": {
+    "text": "Sigues el camino de tierra. Tras unos metros, encuentras un pequeño cofre de madera a medio enterrar.",
+    "options": [
+      { "label": "Abrir el cofre (con cuidado)", "nextScene": "coffin_open" },
+      { "label": "Ignorar el cofre y seguir", "nextScene": "path_continue" }
+    ]
+  },
+  "coffin_open": {
+    "text": "Dentro del cofre hay un único objeto: una llave de hierro oxidada. La guardas en tu bolsillo.",
+    "options": [
+      { "label": "Continuar por el camino", "nextScene": "path_continue_key" }
+    ]
+  },
+  "path_continue": {
+    "text": "Continúas por el camino, sintiendo una ligera inquietud por haber dejado el cofre. El camino desemboca en una pared de piedra. ¿Intentas escalarla o buscas otra ruta?",
+    "options": [
+      { "label": "Escalar la pared (Riesgo)", "nextScene": "climb_attempt" },
+      { "label": "Volver atrás y tomar el riachuelo", "nextScene": "river_choice" }
+    ]
+  },
+  "path_continue_key": {
+    "text": "Con la llave en el bolsillo, continúas hasta la pared de piedra. Notas un pequeño hueco en la base, como una cerradura. ¿Usas la llave que encontraste?",
+    "options": [
+      { 
+        "label": "Usar la llave de hierro", 
+        "nextScene": "secret_passage",
+        "requiresInventory": "hasKey",
+        "requiresText": "Llave de Hierro"
+      },
+      { "label": "Escalar la pared (Riesgo)", "nextScene": "climb_attempt" }
+    ]
+  },
+  
+  "river_choice": {
+    "text": "El riachuelo es frío y oscuro. El sonido del agua te da escalofríos. ¿Cruzas o lo sigues?",
+    "options": []
+  },
+  "climb_attempt": {
+    "text": "El intento de escalada es peligroso. Resbalas, caes y te lastimas el tobillo. A duras penas consigues volver al inicio del camino.",
+    "options": [
+        { "label": "Reiniciar la aventura", "nextScene": "start" }
+    ] 
+  },
+  "secret_passage": {
+    "text": "La llave encaja perfectamente. Un pasadizo oculto se abre ante ti, revelando una luz tenue.",
+    "options": []
+  }
+}

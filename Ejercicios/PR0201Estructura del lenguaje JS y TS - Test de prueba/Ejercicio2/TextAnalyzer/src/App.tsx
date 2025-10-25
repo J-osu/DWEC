@@ -248,7 +248,7 @@ const App = () => {
                         </aside>
                     </div>
 
-                    <div className="footer">Text Analyzer Pro — Diseño modernizado</div>
+                    <div className="footer">Text Analyzer Pro — Diseñado por mi abuela</div>
                 </div>
             </div>
     );
