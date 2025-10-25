@@ -36,3 +36,9 @@ export interface SorteoResult {
     ganador: ParticipanteData | null;
     mensaje: string;
 }
+
+export interface DatosParticipante {
+    id: string;
+    nombre: string;
+    email: string;
+}
