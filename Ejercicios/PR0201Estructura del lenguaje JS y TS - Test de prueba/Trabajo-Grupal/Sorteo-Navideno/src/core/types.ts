@@ -1,15 +1,19 @@
+/** Interfaz para el formulario de registro de participante */
+export interface DatosParticipanteForm {
+    nombre: string;
+    email: string;
+}
+
 /** Interfaz para los datos básicos del participante. */
 export interface ParticipanteData {
     id: string;
     nombre: string;
     email: string;
-    telefono: string;
 }
 
-/** Estructura de datos para el estado del sorteo (ahora local). */
 export interface SorteoStateData {
     participants: ParticipanteData[];
-    tablero: Record<string, string | null>; // Ejemplo: { "00": "P-1", "01": null }
+    tablero: Record<string, string | null>;
     participanteIdCounter: number;
 }
 
@@ -41,4 +45,9 @@ export interface DatosParticipante {
     id: string;
     nombre: string;
     email: string;
+}
+
+export interface RaffleModalProps {
+    result: SorteoResult | null;
+    closeModal: () => void;
 }
