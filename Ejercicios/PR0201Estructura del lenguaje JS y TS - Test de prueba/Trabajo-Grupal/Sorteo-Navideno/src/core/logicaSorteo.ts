@@ -1,7 +1,7 @@
 import type { ParticipanteData, SorteoStateData, NumeroStatus, SorteoResult, SorteoStats } from "../core/types";
 
 /** Clase de error personalizada para operaciones inválidas. */
-class SorteoError extends Error {
+export class SorteoError extends Error {
     constructor(message: string) {
         super(message);
         this.name = "SorteoError";

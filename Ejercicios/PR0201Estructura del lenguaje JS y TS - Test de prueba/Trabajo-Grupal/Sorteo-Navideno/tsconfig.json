@@ -1,7 +1,19 @@
+// tsconfig.json
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    // 🛑 CLAVE 1: Usa una versión moderna de ECMAScript para el compilador.
+    // Esto asegura que `padStart` y otras funciones modernas estén disponibles.
+    "target": "ES2020", 
+
+    // 🛑 CLAVE 2: Asegura que las bibliotecas de tipos de JavaScript moderno estén disponibles.
+    // Esto es crucial para Map, Set, y String.
+    "lib": ["ES2020", "DOM"], 
+    
+    // ... otras opciones ...
+
+    // (Asegúrate de mantener tu configuración de módulos para Jest)
+    "module": "CommonJS", 
+    "esModuleInterop": true,
+    "types": ["jest", "node"]
+  }
 }
