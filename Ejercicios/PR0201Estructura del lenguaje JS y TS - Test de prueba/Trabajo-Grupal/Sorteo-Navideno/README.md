@@ -66,3 +66,102 @@ Esta aplicación permite gestionar un sorteo navideño donde los participantes p
 - Usa el botón "Volver al Inicio" para regresar a la página principal
 - Puedes acceder al registro de participantes desde cualquier página
 - La página de resultados está disponible después de realizar el sorteo
+
+---
+
+# Documentación Técnica
+
+## Diagrama de Clases
+```mermaid
+classDiagram
+    class Sorteo {
+        -participantes: Map<string, Participante>
+        -tablero: Map<string, string | null>
+        -participanteIdCounter: number
+        +registrarParticipante(data)
+        +eliminarParticipante(id)
+        +reservarNumero(numero, participanteId)
+        +liberarNumero(numero)
+        +realizarSorteo(numeroGanador)
+        +getEstadoTablero()
+        +getListaParticipantes()
+    }
+    
+    class Participante {
+        +id: string
+        +nombre: string
+        +email: string
+        +isValid()
+        +static isValidEmail(email)
+    }
+    
+    Sorteo "1" --> "*" Participante : contiene
+
+```
+
+## Interfaces y Tipos Principales
+
+### ParticipanteData
+```typescript
+interface ParticipanteData {
+    id: string;      // Identificador único del participante
+    nombre: string;  // Nombre del participante
+    email: string;   // Email del participante
+}
+```
+
+### NumeroStatus
+```typescript
+type NumeroStatus = {
+    numero: string;           // Número en formato "00"-"99"
+    ocupado: boolean;        // Indica si está reservado
+    participanteId: string | null;  // ID del participante que lo reservó
+    nombreParticipante: string | null;  // Nombre del participante
+}
+```
+
+### SorteoStats
+```typescript
+interface SorteoStats {
+    totalNumbers: number;        // Total de números disponibles (100)
+    occupiedNumbers: number;     // Números reservados
+    availableNumbers: number;    // Números libres
+    percentageOccupied: number;  // Porcentaje de ocupación
+    totalParticipants: number;   // Total de participantes
+}
+```
+
+### SorteoResult
+```typescript
+interface SorteoResult {
+    numeroGanador: string;              // Número ganador
+    ganador: ParticipanteData | null;   // Datos del ganador
+    mensaje: string;                     // Mensaje del resultado
+}
+```
+
+## Arquitectura del Proyecto
+
+El proyecto sigue una arquitectura modular organizada en las siguientes carpetas:
+
+- `/src/core/`: Contiene la lógica principal del sorteo
+  - `logicaSorteo.ts`: Implementación principal del sorteo
+  - `types.ts`: Definiciones de tipos e interfaces
+  - `sorteoService.ts`: Servicios y gestión de estado
+
+- `/src/components/`: Componentes React de la interfaz
+  - `/sorteo/`: Componentes específicos del sorteo
+    - `tablero.tsx`: Visualización del tablero de números
+    - `registroparticipantes.tsx`: Formulario de registro
+    - `resultados.tsx`: Visualización de resultados
+
+- `/src/UI/`: Componentes de interfaz reutilizables
+  - `Boton.tsx`: Componente de botón personalizado
+  - `StatCard.tsx`: Tarjeta de estadísticas
+
+## Gestión de Estado
+
+El estado del sorteo se gestiona mediante:
+- Almacenamiento local (LocalStorage) para persistencia
+- Estado en memoria usando Maps para rendimiento
+- Actualizaciones automáticas al realizar cambios.
