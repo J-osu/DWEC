@@ -106,6 +106,22 @@ export class Sorteo {
     public getParticipante(id: string): Participante | undefined { return this.participantes.get(id); }
     public getListaParticipantes(): Participante[] { return Array.from(this.participantes.values()); }
 
+    /** Elimina un participante por id y libera sus números reservados */
+    public eliminarParticipante(participanteId: string): void {
+        if (!this.participantes.has(participanteId)) {
+            throw new SorteoError(`Participante con id ${participanteId} no encontrado.`);
+        }
+
+        // Liberar todos los números asignados a ese participante
+        for (const [numero, id] of this.tablero.entries()) {
+            if (id === participanteId) {
+                this.tablero.set(numero, null);
+            }
+        }
+
+        this.participantes.delete(participanteId);
+    }
+
     public reservarNumero(numero: string, participanteId: string): void {
         const numFormatted = Sorteo.formatNumero(numero);
         if (this.tablero.get(numFormatted) !== null) { throw new SorteoError(`El número ${numFormatted} ya está ocupado.`); }

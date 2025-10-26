@@ -1,22 +1,27 @@
-interface TarjetaProps {
-  titulo: string;
-  descripcion: string;
+interface StatItem {
+  label: string;
+  value: number;
 }
 
-export default function Tarjeta({ titulo, descripcion }: TarjetaProps) {
+interface StatCardProps {
+  title: string;
+  stats: StatItem[];
+}
+
+export default function StatCard({ title, stats }: StatCardProps) {
   return (
     <div
-      style={{
-        backgroundColor: '#fff',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-        padding: '16px',
-        maxWidth: '250px',
-        textAlign: 'center',
-      }}
+      className="bg-white rounded-xl shadow-lg p-6"
     >
-      <h3 style={{ marginBottom: '8px', color: '#333' }}>{titulo}</h3>
-      <p style={{ color: '#555', fontSize: '14px' }}>{descripcion}</p>
+      <h3 className="text-xl font-semibold text-gray-800 mb-4">{title}</h3>
+      <div className="space-y-4">
+        {stats.map((stat, index) => (
+          <div key={index} className="flex justify-between items-center">
+            <span className="text-gray-600">{stat.label}:</span>
+            <span className="text-2xl font-bold text-indigo-600">{stat.value}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

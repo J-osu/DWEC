@@ -1,3 +1,9 @@
+/** Interfaz para el formulario de registro de participante */
+export interface DatosParticipanteForm {
+    nombre: string;
+    email: string;
+}
+
 /** Interfaz para los datos básicos del participante. */
 export interface ParticipanteData {
     id: string;
@@ -39,4 +45,9 @@ export interface DatosParticipante {
     id: string;
     nombre: string;
     email: string;
+}
+
+export interface RaffleModalProps {
+    result: SorteoResult | null;
+    closeModal: () => void;
 }
