@@ -130,7 +130,13 @@ export class Sorteo {
 
     public liberarNumero(numero: string): void {
         const numFormatted = Sorteo.formatNumero(numero);
-        if (this.tablero.get(numFormatted) === null) { throw new SorteoError(`El número ${numFormatted} ya está libre.`); }
+        const estado = this.tablero.get(numFormatted);
+        if (estado === undefined) {
+            throw new SorteoError(`Número inválido: ${numero}.`);
+        }
+        if (estado === null) {
+            throw new SorteoError(`El número ${numFormatted} ya está libre.`);
+        }
         this.tablero.set(numFormatted, null);
     }
     
