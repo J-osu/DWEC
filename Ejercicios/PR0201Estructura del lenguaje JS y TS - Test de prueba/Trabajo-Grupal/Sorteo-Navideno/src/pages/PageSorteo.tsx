@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import type { SorteoResult, NumeroStatus, ParticipanteData } from '../core/types';
+import type { NumeroStatus, ParticipanteData } from '../core/types';
 import RaffleBoard from '../components/sorteo/tablero';
-import RaffleModal from '../components/sorteo/resultados';
 import SeleccionGanador from '../components/sorteo/empiezasorteo';
 import StatCard from '../UI/StatCard';
 import Boton from '../UI/Boton';
@@ -17,8 +16,6 @@ import {
 } from '../core/sorteoService';
 
 const PageSorteo: React.FC = () => {
-  const [resultadoSorteo, setResultadoSorteo] = useState<SorteoResult | null>(null);
-  const [showModal, setShowModal] = useState(false);
   const [selectedParticipantId, setSelectedParticipantId] = useState<string>('');
   const [tableroStatus, setTableroStatus] = useState<NumeroStatus[]>(() => getEstadoTablero());
   const [participantes, setParticipantes] = useState<ParticipanteData[]>(() => getListaParticipantes());
@@ -53,10 +50,6 @@ const PageSorteo: React.FC = () => {
     setTableroStatus(getEstadoTablero());
     setParticipantes(getListaParticipantes());
     navigate('/ganador');
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
   };
 
   const reservedNumbers = selectedParticipantId 
