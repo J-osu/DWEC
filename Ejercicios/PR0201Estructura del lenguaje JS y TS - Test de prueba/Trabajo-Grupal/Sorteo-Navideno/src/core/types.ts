@@ -51,3 +51,13 @@ export interface RaffleModalProps {
     result: SorteoResult | null;
     closeModal: () => void;
 }
+
+export interface RaffleBoardProps {
+    tableroStatus: NumeroStatus[];
+    participantes: ParticipanteData[];
+    selectedParticipantId: string;
+    setSelectedParticipantId: (id: string) => void;
+    handleReserve: (numero: string) => void;
+    handleRelease: (numero: string) => void;
+    reservedNumbers: string[];
+}

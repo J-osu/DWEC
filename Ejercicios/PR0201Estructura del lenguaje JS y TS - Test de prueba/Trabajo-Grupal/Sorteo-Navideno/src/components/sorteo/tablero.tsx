@@ -1,17 +1,7 @@
-import React from 'react';
-import type { NumeroStatus, ParticipanteData } from '../../core/types';
+import React, { useMemo } from 'react';
+import type { NumeroStatus, RaffleBoardProps } from '../../core/types';
 import '../../assets/css/tablero.css';
 
-/** Componente: Tablero de Números */
-export interface RaffleBoardProps {
-    tableroStatus: NumeroStatus[];
-    participantes: ParticipanteData[];
-    selectedParticipantId: string;
-    setSelectedParticipantId: (id: string) => void;
-    handleReserve: (numero: string) => void;
-    handleRelease: (numero: string) => void;
-    reservedNumbers: string[];
-}
 const RaffleBoard: React.FC<RaffleBoardProps> = ({
     tableroStatus, participantes, selectedParticipantId, setSelectedParticipantId,
     handleReserve, handleRelease, reservedNumbers
@@ -19,9 +9,18 @@ const RaffleBoard: React.FC<RaffleBoardProps> = ({
     
     const selectedParticipant = participantes.find(p => p.id === selectedParticipantId);
 
+    const sortedTableroStatus = useMemo(() => {
+        // Crea una copia para no mutar el prop original y ordena por número (ascendente)
+        return [...tableroStatus].sort((a, b) => {
+            const numA = parseInt(a.numero, 10);
+            const numB = parseInt(b.numero, 10);
+            return numA - numB;
+        });
+    }, [tableroStatus]);
+
     const handleCellAction = (status: NumeroStatus) => {
         if (!selectedParticipantId) {
-            alert('⚠️ Por favor, selecciona un participante de la lista antes de interactuar con el tablero.');
+            alert('Por favor, selecciona un participante de la lista antes de interactuar con el tablero.');
             return;
         }
 
@@ -56,9 +55,9 @@ const RaffleBoard: React.FC<RaffleBoardProps> = ({
                 </div>
             )}
 
-
+            {/* Usamos el array ordenado: sortedTableroStatus */}
             <div className="raffle-grid">
-                {tableroStatus.map(status => {
+                {sortedTableroStatus.map(status => {
                     const isSelected = status.participanteId === selectedParticipantId;
                     const statusClass = isSelected ? 'status-selected' : (status.ocupado ? 'status-occupied' : 'status-available');
                     const tooltip = isSelected ? `Tuyo: ${status.nombreParticipante}. Click para liberar.` : (status.ocupado ? `Ocupado por ${status.nombreParticipante}. Click para liberar.` : (selectedParticipant ? 'Click para reservar.' : 'Libre. Selecciona un participante para reservar.'));
