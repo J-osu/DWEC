@@ -1,138 +1,123 @@
-/*
- * Estilos CSS para el componente RaffleBoard (Tablero de Números 00-99).
- * Diseñado para ser moderno, responsivo y visualmente distintivo.
- */
 
-/* Contenedor principal del tablero */
 .raffle-board-container {
-    background-color: #ffffff; /* Fondo blanco */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
     padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     margin-top: 32px;
 }
 
-/* Título del tablero */
+
 .raffle-board-container h2 {
-    font-size: 1.5rem; /* 24px */
-    font-weight: 600;
-    color: #1f2937; /* Gris oscuro */
-    margin-bottom: 16px;
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #d1d5db;
+    padding-bottom: 10px;
 }
 
-/* Contenedor de la cuadrícula (GRID) */
 .raffle-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 columnas de igual ancho */
-    gap: 8px; /* Espacio entre celdas */
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
     margin-top: 16px;
 }
 
-/* Estilo base de cada celda de número */
+
 .raffle-cell {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4px;
-    border-radius: 6px;
-    font-size: 0.875rem; /* 14px */
+    padding: 6px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    aspect-ratio: 1 / 1; /* Asegura que la celda sea cuadrada */
+    transition: all 0.3s ease-in-out;
+    aspect-ratio: 1 / 1;
     user-select: none;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(200, 200, 200, 0.4);
 }
 
-/* Número principal */
 .raffle-cell-number {
     font-weight: 700;
     color: #1f2937;
-    line-height: 1;
 }
 
-/* Estado secundario (Libre/Nombre) */
 .raffle-cell-status {
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
     line-height: 1;
-    white-space: nowrap; /* Evita que el nombre se rompa en varias líneas */
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
-    color: #4b5563; /* Gris */
+    color: #374151;
 }
 
-/* --- ESTADOS DE LAS CELDAS --- */
 
-/* 1. Celda LIBRE (verde claro) */
 .raffle-cell.status-available {
-    background-color: #d1fae5; /* Verde muy claro (Emerald-100) */
-    border: 1px solid #10b981; /* Borde Emerald-500 */
+    background-color: rgba(134, 239, 172, 0.5);
+    border: 1px solid #10b981;
 }
 
 .raffle-cell.status-available:hover {
-    background-color: #a7f3d0; /* Emerald-200 */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(110, 231, 183, 0.7);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
 }
 
-/* 2. Celda OCUPADA (rojo/rosa claro) */
 .raffle-cell.status-occupied {
-    background-color: #fee2e2; /* Rojo/Rosa claro (Red-100) */
-    border: 1px solid #ef4444; /* Borde Red-500 */
+    background-color: rgba(254, 202, 202, 0.5);
+    border: 1px solid #ef4444;
     cursor: not-allowed;
 }
 
 .raffle-cell.status-occupied .raffle-cell-status {
-    color: #b91c1c; /* Rojo oscuro */
+    color: #b91c1c;
     font-weight: 500;
 }
 
-/* 3. Celda SELECCIONADA (El número pertenece al participante activo) */
-/* Sobrescribe status-occupied si el ID coincide */
 .raffle-cell.status-selected {
-    background-color: #fcd34d; /* Amarillo (Amber-300) */
-    border: 2px solid #d97706; /* Borde Naranja oscuro */
-    transform: scale(1.05); /* Ligeramente más grande para destacar */
-    box-shadow: 0 6px 10px rgba(251, 191, 36, 0.4); /* Sombra amarilla */
+    background-color: rgba(252, 211, 77, 0.6);
+    border: 2px solid #d97706;
+    transform: scale(1.05);
+    box-shadow: 0 8px 14px rgba(251, 191, 36, 0.4);
 }
 
 .raffle-cell.status-selected:hover {
-    background-color: #fbb329; /* Amarillo más oscuro */
+    background-color: rgba(251, 179, 41, 0.7);
     transform: scale(1.08);
 }
 
-/* Contenedor de información del participante activo */
 .participant-info {
-    padding: 12px;
-    background-color: #e0f2f1; /* Cian claro */
-    border: 1px solid #009688; /* Cian más oscuro */
-    border-radius: 8px;
+    padding: 14px;
+    background-color: rgba(178, 223, 219, 0.6);
+    border: 1px solid #009688;
+    border-radius: 10px;
     margin-bottom: 20px;
-    color: #004d40; /* Texto oscuro */
+    color: #004d40;
 }
 
 .participant-info strong {
     font-weight: 600;
 }
 
-
-/* --- RESPONSIVIDAD (Ajuste para móviles) --- */
-
 @media (max-width: 640px) {
     .raffle-board-container {
-        padding: 16px;
+        padding: 18px;
     }
     .raffle-grid {
-        grid-template-columns: repeat(5, 1fr); /* 5 columnas en pantallas pequeñas */
+        grid-template-columns: repeat(5, 1fr);
         gap: 6px;
     }
     .raffle-cell {
-        font-size: 0.75rem; /* 12px */
+        font-size: 0.8rem;
     }
     .raffle-cell-status {
-        font-size: 0.625rem; /* 10px */
+        font-size: 0.65rem;
     }
 }

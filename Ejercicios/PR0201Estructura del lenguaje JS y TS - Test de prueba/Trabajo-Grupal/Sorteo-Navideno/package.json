@@ -44,5 +44,10 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
     "vite": "^7.1.7"
-  }
+  },
+  "description": "Esta aplicación permite gestionar un sorteo navideño donde los participantes pueden seleccionar números y participar en un sorteo.",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
